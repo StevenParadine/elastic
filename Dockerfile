@@ -11,4 +11,6 @@ COPY elasticsearch.yml /usr/share/elasticsearch/config/
 
 COPY es_*.json /opt/data/
 
+RUN chmod +x /opt/bin/start.sh
+
 ENTRYPOINT ["/opt/bin/start.sh"]
