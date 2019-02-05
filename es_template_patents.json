@@ -1,104 +1,106 @@
 {
-  "template": "patents-*",
+  "index_patterns": [
+    "patents-*"
+  ],
   "order": 1,
   "mappings": {
-    "_default_": {
+    "_doc": {
       "properties": {
         "dateProduced": {
           "type": "long",
-          "index": "no"
+          "index": false
         },
         "bibliographicDetails": {
           "properties": {
             "applicationDetails": {
               "properties": {
                 "applicationNumber": {
-                  "type": "string",
-                  "index": "not_analyzed"
+                  "type": "keyword",
+                  "index": true
                 },
                 "applicationType": {
-                  "type": "string",
-                  "index": "no"
+                  "type": "text",
+                  "index": false
                 },
                 "auspatNumber": {
-                  "type": "string",
-                  "index": "no"
+                  "type": "text",
+                  "index": false
                 },
                 "effectiveDate": {
                   "type": "long",
-                  "index": "no"
+                  "index": false
                 },
                 "expiryDate": {
                   "type": "long",
-                  "index": "no"
+                  "index": false
                 },
                 "filingDate": {
                   "type": "long",
-                  "index": "no"
+                  "index": false
                 },
                 "inventionTitle": {
-                  "type": "string",
-                  "index": "no"
+                  "type": "text",
+                  "index": false
                 },
                 "opiDate": {
                   "type": "long",
-                  "index": "no"
+                  "index": false
                 },
                 "status": {
-                  "type": "string",
-                  "index": "no"
+                  "type": "text",
+                  "index": false
                 },
                 "underOpposition": {
-                  "type": "string",
-                  "index": "no"
+                  "type": "text",
+                  "index": false
                 }
               }
             },
             "classifications": {
               "properties": {
                 "classificationClass": {
-                  "type": "string",
-                  "index": "no"
+                  "type": "text",
+                  "index": false
                 },
                 "classificationLevel": {
-                  "type": "string",
-                  "index": "no"
+                  "type": "text",
+                  "index": false
                 },
                 "dataSource": {
-                  "type": "string",
-                  "index": "no"
+                  "type": "text",
+                  "index": false
                 },
                 "mainGroup": {
-                  "type": "string",
-                  "index": "no"
+                  "type": "text",
+                  "index": false
                 },
                 "section": {
-                  "type": "string",
-                  "index": "no"
+                  "type": "text",
+                  "index": false
                 },
                 "status": {
-                  "type": "string",
-                  "index": "no"
+                  "type": "text",
+                  "index": false
                 },
                 "subGroup": {
-                  "type": "string",
-                  "index": "no"
+                  "type": "text",
+                  "index": false
                 },
                 "subclass": {
-                  "type": "string",
-                  "index": "no"
+                  "type": "text",
+                  "index": false
                 },
                 "symbolPosition": {
-                  "type": "string",
-                  "index": "no"
+                  "type": "text",
+                  "index": false
                 },
                 "value": {
-                  "type": "string",
-                  "index": "no"
+                  "type": "text",
+                  "index": false
                 },
                 "versionDate": {
                   "type": "long",
-                  "index": "no"
+                  "index": false
                 }
               }
             },
@@ -109,16 +111,16 @@
                     "addressBook": {
                       "properties": {
                         "address": {
-                          "type": "string",
-                          "index": "no"
+                          "type": "text",
+                          "index": false
                         },
                         "country": {
-                          "type": "string",
-                          "index": "no"
+                          "type": "text",
+                          "index": false
                         },
                         "name": {
-                          "type": "string",
-                          "index": "no"
+                          "type": "text",
+                          "index": false
                         }
                       }
                     }
@@ -127,8 +129,8 @@
                 "inventors": {
                   "properties": {
                     "name": {
-                      "type": "string",
-                      "index": "no"
+                      "type": "text",
+                      "index": false
                     }
                   }
                 }

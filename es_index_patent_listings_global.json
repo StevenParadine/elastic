@@ -1,0 +1,320 @@
+{
+  "settings": {
+    "analysis": {
+      "analyzer": {
+        "whole_listing_analyzer": {
+          "type": "custom",
+          "tokenizer": "standard",
+          "filter": [
+            "standard",
+            "lowercase",
+            "stop",
+            "snowball"
+          ]
+        }
+      }
+    }
+  },
+  "mappings": {
+    "patent_listing": {
+      "properties": {
+        "whole_listing": {
+          "type": "text",
+          "analyzer": "whole_listing_analyzer"
+        },
+        "patentId": {
+          "copy_to": "whole_listing",
+          "type": "keyword"
+        },
+        "lastModified": {
+          "copy_to": "whole_listing",
+          "type":   "long"
+        },
+        "bibliographicDetails": {
+          "properties": {
+            "applicationDetails": {
+              "properties": {
+                "applicationNumber": {
+                  "copy_to": "whole_listing",
+                  "type": "text",
+                  "fields": {
+                    "raw": {
+                      "type": "keyword"
+                    }
+                  }
+                },
+                "applicationType": {
+                  "copy_to": "whole_listing",
+                  "type": "text",
+                  "fields": {
+                    "raw": {
+                      "type": "keyword"
+                    }
+                  }
+                },
+                "auspatNumber": {
+                  "copy_to": "whole_listing",
+                  "type": "text"
+                },
+                "effectiveDate": {
+                  "copy_to": "whole_listing",
+                  "type": "long"
+                },
+                "expiryDate": {
+                  "copy_to": "whole_listing",
+                  "type": "long"
+                },
+                "filingDate": {
+                  "copy_to": "whole_listing",
+                  "type": "long"
+                },
+                "inventionTitle": {
+                  "copy_to": "whole_listing",
+                  "type": "text",
+                  "fields": {
+                    "raw": {
+                      "type": "keyword"
+                    }
+                  }
+                },
+                "opiDate": {
+                  "copy_to": "whole_listing",
+                  "type": "long"
+                },
+                "status": {
+                  "copy_to": "whole_listing",
+                  "type": "text",
+                  "fields": {
+                    "raw": {
+                      "type": "keyword"
+                    }
+                  }
+                },
+                "underOpposition": {
+                  "copy_to": "whole_listing",
+                  "type": "text"
+                }
+              }
+            },
+            "classifications": {
+              "properties": {
+                "classificationClass": {
+                  "copy_to": "whole_listing",
+                  "type": "text"
+                },
+                "classificationLevel": {
+                  "copy_to": "whole_listing",
+                  "type": "text"
+                },
+                "dataSource": {
+                  "copy_to": "whole_listing",
+                  "type": "text"
+                },
+                "mainGroup": {
+                  "copy_to": "whole_listing",
+                  "type": "text"
+                },
+                "section": {
+                  "copy_to": "whole_listing",
+                  "type": "text"
+                },
+                "status": {
+                  "copy_to": "whole_listing",
+                  "type": "text"
+                },
+                "subGroup": {
+                  "copy_to": "whole_listing",
+                  "type": "text"
+                },
+                "subclass": {
+                  "copy_to": "whole_listing",
+                  "type": "text"
+                },
+                "symbolPosition": {
+                  "copy_to": "whole_listing",
+                  "type": "text"
+                },
+                "value": {
+                  "copy_to": "whole_listing",
+                  "type": "text"
+                },
+                "versionDate": {
+                  "copy_to": "whole_listing",
+                  "type": "long"
+                }
+              }
+            },
+            "parties": {
+              "properties": {
+                "applicants": {
+                  "properties": {
+                    "addressBook": {
+                      "properties": {
+                        "address": {
+                          "copy_to": "whole_listing",
+                          "type": "text"
+                        },
+                        "country": {
+                          "copy_to": "whole_listing",
+                          "type": "text"
+                        },
+                        "name": {
+                          "copy_to": "whole_listing",
+                          "type": "text"
+                        }
+                      }
+                    }
+                  }
+                },
+                "inventors": {
+                  "properties": {
+                    "name": {
+                      "copy_to": "whole_listing",
+                      "type": "text"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "licensingInformation": {
+          "properties": {
+            "description": {
+              "copy_to": "whole_listing",
+              "type": "text"
+            },
+            "licensing": {
+              "copy_to": "whole_listing",
+              "type": "text",
+              "fields": {
+                "raw": {
+                  "type": "keyword"
+                }
+              }
+            },
+            "organisations": {
+              "properties": {
+                "id": {
+                  "copy_to": "whole_listing",
+                  "type": "long"
+                },
+                "name": {
+                  "copy_to": "whole_listing",
+                  "type": "text",
+                  "fields": {
+                    "raw": {
+                      "type": "keyword"
+                    }
+                  }
+                },
+                "logoUrl": {
+                  "copy_to": "whole_listing",
+                  "type": "keyword"
+                }
+              }
+            },
+            "assets": {
+              "properties": {
+                "assetId": {
+                  "copy_to": "whole_listing",
+                  "type": "keyword"
+                },
+                "description": {
+                  "copy_to": "whole_listing",
+                  "type": "text"
+                },
+                "type": {
+                  "copy_to": "whole_listing",
+                  "type": "keyword"
+                }
+              }
+            },
+            "fields": {
+              "properties": {
+                "area": {
+                  "properties": {
+                    "name": {
+                      "copy_to": "whole_listing",
+                      "type": "keyword"
+                    },
+                    "numeral": {
+                      "copy_to": "whole_listing",
+                      "type": "keyword"
+                    }
+                  }
+                },
+                "field": {
+                  "properties": {
+                    "name": {
+                      "copy_to": "whole_listing",
+                      "type": "keyword"
+                    },
+                    "numeral": {
+                      "copy_to": "whole_listing",
+                      "type": "keyword"
+                    }
+                  }
+                }
+              }
+            },
+            "displayTitle": {
+              "copy_to": "whole_listing",
+              "type": "text",
+              "fields": {
+                "raw": {
+                  "type": "keyword"
+                }
+              }
+            },
+            "hasLicensees": {
+              "copy_to": "whole_listing",
+              "type": "boolean",
+              "fields": {
+                "raw": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        },
+        "identifiers": {
+          "properties": {
+            "sourceSystemName": {
+              "copy_to": "whole_listing",
+              "type": "keyword"
+            },
+            "sourceSystemIdType": {
+              "copy_to": "whole_listing",
+              "type": "keyword"
+            },
+            "id": {
+              "copy_to": "whole_listing",
+              "type": "keyword"
+            }
+          }
+        },
+        "derwentAbstract": {
+          "properties": {
+            "title": {
+              "copy_to": "whole_listing",
+              "type": "text"
+            },
+            "novelty": {
+              "copy_to": "whole_listing",
+              "type": "text"
+            },
+            "use": {
+              "copy_to": "whole_listing",
+              "type": "text"
+            },
+            "advantage": {
+              "copy_to": "whole_listing",
+              "type": "text"
+            }
+          }
+        }
+      }
+    }
+  }
+}

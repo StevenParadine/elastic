@@ -1,0 +1,23 @@
+{
+  /* This template specifies defaults across all indices. */
+  "index_patterns": [
+    "*"
+  ],
+  "order": 1,
+  "settings": {
+    "index": {
+      "search": {
+        "slowlog": {
+          "threshold": {
+            "query": {
+              "debug": "-1",
+              "info": "10ms",
+              "trace": "-1",
+              "warn": "100ms"
+            }
+          }
+        }
+      }
+    }
+  }
+}

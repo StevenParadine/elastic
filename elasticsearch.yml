@@ -2,16 +2,26 @@
 # during development, but probably not suitable for production.
 cluster.name: ${CLUSTER_NAME}
 
-# Configuration of the slowlog query thresholds, default values set in start.sh
-index.search.slowlog.threshold.query.trace: ${SLOWLOG_TRACE_THRESHOLD}
-index.search.slowlog.threshold.query.debug: ${SLOWLOG_DEBUG_THRESHOLD}
-index.search.slowlog.threshold.query.info: ${SLOWLOG_INFO_THRESHOLD}
-index.search.slowlog.threshold.query.warn: ${SLOWLOG_WARN_THRESHOLD}
+# The default setting for this only binds to loopback addresses, which means the 
+# service is inaccessible when running in a Docker container. To solve this
+# we bind to all addresses.
+#
+# Note: This has the side effect of putting the server in "production mode", where
+# warnings are treated as exceptions.
+network.host: 0.0.0.0 
 
 # The lowest level of slowlog event that will be recorded, defaults to INFO
 logger.index.search.slowlog: ${SLOWLOG_LEVEL}
+
+# Configuration of the AWS S3 plugin
+s3.client.s3_backup.endpoint: "s3.ap-southeast-2.amazonaws.com"
+s3.client.s3_backup.protocol: "http"
+s3.client.s3_backup.max_retries: "3"
 
 # Configuration of the statsd metrics plugin
 metrics.statsd.host: ${STATSD_HOST}
 metrics.statsd.port: ${STATSD_PORT}
 metrics.statsd.every: ${STATSD_UPDATE_EVERY}
+
+reindex.remote.whitelist: ${SOURCE_IP_ELASTIC_SEARCH_1_6_SERVICE_HOST}:${SOURCE_IP_ELASTIC_SEARCH_1_6_SERVICE_PORT}
+

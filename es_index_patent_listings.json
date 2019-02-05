@@ -1,16 +1,33 @@
 {
+  "settings": {
+    "analysis": {
+      "analyzer": {
+        "whole_listing_analyzer": {
+          "type": "custom",
+          "tokenizer": "standard",
+          "filter": [
+            "standard",
+            "lowercase",
+            "stop",
+            "snowball"
+          ]
+        }
+      }
+    }
+  },
   "mappings": {
     "patent_listing": {
-      "_all": {
-        "enabled": true,
-        "analyzer": "snowball"
-      },
       "properties": {
+        "whole_listing": {
+          "type": "text",
+          "analyzer": "whole_listing_analyzer"
+        },
         "patentId": {
-          "type": "string",
-          "index": "not_analyzed"
+          "copy_to": "whole_listing",
+          "type": "keyword"
         },
         "lastModified": {
+          "copy_to": "whole_listing",
           "type":   "long"
         },
         "bibliographicDetails": {
@@ -18,94 +35,111 @@
             "applicationDetails": {
               "properties": {
                 "applicationNumber": {
-                  "type": "string",
+                  "copy_to": "whole_listing",
+                  "type": "text",
                   "fields": {
                     "raw": {
-                      "type": "string",
-                      "index": "not_analyzed"
+                      "type": "keyword"
                     }
                   }
                 },
                 "applicationType": {
-                  "type": "string",
+                  "copy_to": "whole_listing",
+                  "type": "text",
                   "fields": {
                     "raw": {
-                      "type": "string",
-                      "index": "not_analyzed"
+                      "type": "keyword"
                     }
                   }
                 },
                 "auspatNumber": {
-                  "type": "string"
+                  "copy_to": "whole_listing",
+                  "type": "text"
                 },
                 "effectiveDate": {
+                  "copy_to": "whole_listing",
                   "type": "long"
                 },
                 "expiryDate": {
+                  "copy_to": "whole_listing",
                   "type": "long"
                 },
                 "filingDate": {
+                  "copy_to": "whole_listing",
                   "type": "long"
                 },
                 "inventionTitle": {
-                  "type": "string",
+                  "copy_to": "whole_listing",
+                  "type": "text",
                   "fields": {
                     "raw": {
-                      "type": "string",
-                      "index": "not_analyzed"
+                      "type": "keyword"
                     }
                   }
                 },
                 "opiDate": {
+                  "copy_to": "whole_listing",
                   "type": "long"
                 },
                 "status": {
-                  "type": "string",
+                  "copy_to": "whole_listing",
+                  "type": "text",
                   "fields": {
                     "raw": {
-                      "type": "string",
-                      "index": "not_analyzed"
+                      "type": "keyword"
                     }
                   }
                 },
                 "underOpposition": {
-                  "type": "string"
+                  "copy_to": "whole_listing",
+                  "type": "text"
                 }
               }
             },
             "classifications": {
               "properties": {
                 "classificationClass": {
-                  "type": "string"
+                  "copy_to": "whole_listing",
+                  "type": "text"
                 },
                 "classificationLevel": {
-                  "type": "string"
+                  "copy_to": "whole_listing",
+                  "type": "text"
                 },
                 "dataSource": {
-                  "type": "string"
+                  "copy_to": "whole_listing",
+                  "type": "text"
                 },
                 "mainGroup": {
-                  "type": "string"
+                  "copy_to": "whole_listing",
+                  "type": "text"
                 },
                 "section": {
-                  "type": "string"
+                  "copy_to": "whole_listing",
+                  "type": "text"
                 },
                 "status": {
-                  "type": "string"
+                  "copy_to": "whole_listing",
+                  "type": "text"
                 },
                 "subGroup": {
-                  "type": "string"
+                  "copy_to": "whole_listing",
+                  "type": "text"
                 },
                 "subclass": {
-                  "type": "string"
+                  "copy_to": "whole_listing",
+                  "type": "text"
                 },
                 "symbolPosition": {
-                  "type": "string"
+                  "copy_to": "whole_listing",
+                  "type": "text"
                 },
                 "value": {
-                  "type": "string"
+                  "copy_to": "whole_listing",
+                  "type": "text"
                 },
                 "versionDate": {
+                  "copy_to": "whole_listing",
                   "type": "long"
                 }
               }
@@ -117,13 +151,16 @@
                     "addressBook": {
                       "properties": {
                         "address": {
-                          "type": "string"
+                          "copy_to": "whole_listing",
+                          "type": "text"
                         },
                         "country": {
-                          "type": "string"
+                          "copy_to": "whole_listing",
+                          "type": "text"
                         },
                         "name": {
-                          "type": "string"
+                          "copy_to": "whole_listing",
+                          "type": "text"
                         }
                       }
                     }
@@ -132,7 +169,8 @@
                 "inventors": {
                   "properties": {
                     "name": {
-                      "type": "string"
+                      "copy_to": "whole_listing",
+                      "type": "text"
                     }
                   }
                 }
@@ -143,50 +181,52 @@
         "licensingInformation": {
           "properties": {
             "description": {
-              "type": "string"
+              "copy_to": "whole_listing",
+              "type": "text"
             },
             "licensing": {
-              "type": "string",
+              "copy_to": "whole_listing",
+              "type": "text",
               "fields": {
                 "raw": {
-                  "type": "string",
-                  "index": "not_analyzed"
+                  "type": "keyword"
                 }
               }
             },
             "organisations": {
               "properties": {
                 "id": {
-                  "type": "long",
-                  "index": "not_analyzed"
+                  "copy_to": "whole_listing",
+                  "type": "long"
                 },
                 "name": {
-                  "type": "string",
+                  "copy_to": "whole_listing",
+                  "type": "text",
                   "fields": {
                     "raw": {
-                      "type": "string",
-                      "index": "not_analyzed"
+                      "type": "keyword"
                     }
                   }
                 },
                 "logoUrl": {
-                  "type": "string",
-                  "index": "not_analyzed"
+                  "copy_to": "whole_listing",
+                  "type": "keyword"
                 }
               }
             },
             "assets": {
               "properties": {
                 "assetId": {
-                  "type": "string",
-                  "index": "not_analyzed"
+                  "copy_to": "whole_listing",
+                  "type": "keyword"
                 },
                 "description": {
-                  "type": "string"
+                  "copy_to": "whole_listing",
+                  "type": "text"
                 },
                 "type": {
-                  "type": "string",
-                  "index": "not_analyzed"
+                  "copy_to": "whole_listing",
+                  "type": "keyword"
                 }
               }
             },
@@ -195,44 +235,44 @@
                 "area": {
                   "properties": {
                     "name": {
-                      "type": "string",
-                      "index": "not_analyzed"
+                      "copy_to": "whole_listing",
+                      "type": "keyword"
                     },
                     "numeral": {
-                      "type": "string",
-                      "index": "not_analyzed"
+                      "copy_to": "whole_listing",
+                      "type": "keyword"
                     }
                   }
                 },
                 "field": {
                   "properties": {
                     "name": {
-                      "type": "string",
-                      "index": "not_analyzed"
+                      "copy_to": "whole_listing",
+                      "type": "keyword"
                     },
                     "numeral": {
-                      "type": "string",
-                      "index": "not_analyzed"
+                      "copy_to": "whole_listing",
+                      "type": "keyword"
                     }
                   }
                 }
               }
             },
             "displayTitle": {
-              "type": "string",
+              "copy_to": "whole_listing",
+              "type": "text",
               "fields": {
                 "raw": {
-                  "type": "string",
-                  "index": "not_analyzed"
+                  "type": "keyword"
                 }
               }
             },
             "hasLicensees": {
+              "copy_to": "whole_listing",
               "type": "boolean",
               "fields": {
                 "raw": {
-                  "type": "boolean",
-                  "index": "not_analyzed"
+                  "type": "boolean"
                 }
               }
             }
@@ -241,16 +281,36 @@
         "identifiers": {
           "properties": {
             "sourceSystemName": {
-              "type": "string",
-              "index": "not_analyzed"
+              "copy_to": "whole_listing",
+              "type": "keyword"
             },
             "sourceSystemIdType": {
-              "type": "string",
-              "index": "not_analyzed"
+              "copy_to": "whole_listing",
+              "type": "keyword"
             },
             "id": {
-              "type": "string",
-              "index": "not_analyzed"
+              "copy_to": "whole_listing",
+              "type": "keyword"
+            }
+          }
+        },
+        "derwentAbstract": {
+          "properties": {
+            "title": {
+              "copy_to": "whole_listing",
+              "type": "text"
+            },
+            "novelty": {
+              "copy_to": "whole_listing",
+              "type": "text"
+            },
+            "use": {
+              "copy_to": "whole_listing",
+              "type": "text"
+            },
+            "advantage": {
+              "copy_to": "whole_listing",
+              "type": "text"
             }
           }
         }
