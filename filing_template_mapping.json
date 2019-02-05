@@ -1,0 +1,26 @@
+{
+  "template": "filing-*",
+  "order": 1,
+  "mappings": {
+    "_default_": {
+      "properties": {
+        "patentId": {
+          "type": "string",
+          "index": "not_analyzed"
+        },
+        "dateProduced": {
+          "type": "long",
+          "index": "no"
+        },
+        "publicationNumber": {
+          "type": "string",
+          "index": "not_analyzed"
+        },
+        "sourceData": {
+          "type": "string",
+          "index": "no"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,256 @@
+{
+  "_all": {
+    "enabled": true,
+    "analyzer": "snowball"
+  },
+  "properties": {
+    "patentId": {
+      "type": "string",
+      "index": "not_analyzed"
+    },
+    "lastModified": {
+      "type":   "long"
+    },
+    "bibliographicDetails": {
+      "properties": {
+        "applicationDetails": {
+          "properties": {
+            "applicationNumber": {
+              "type": "string",
+              "fields": {
+                "raw": {
+                  "type": "string",
+                  "index": "not_analyzed"
+                }
+              }
+            },
+            "applicationType": {
+              "type": "string",
+              "fields": {
+                "raw": {
+                  "type": "string",
+                  "index": "not_analyzed"
+                }
+              }
+            },
+            "auspatNumber": {
+              "type": "string"
+            },
+            "effectiveDate": {
+              "type": "long"
+            },
+            "expiryDate": {
+              "type": "long"
+            },
+            "filingDate": {
+              "type": "long"
+            },
+            "inventionTitle": {
+              "type": "string",
+              "fields": {
+                "raw": {
+                  "type": "string",
+                  "index": "not_analyzed"
+                }
+              }
+            },
+            "opiDate": {
+              "type": "long"
+            },
+            "status": {
+              "type": "string",
+              "fields": {
+                "raw": {
+                  "type": "string",
+                  "index": "not_analyzed"
+                }
+              }
+            },
+            "underOpposition": {
+              "type": "string"
+            }
+          }
+        },
+        "classifications": {
+          "properties": {
+            "classificationClass": {
+              "type": "string"
+            },
+            "classificationLevel": {
+              "type": "string"
+            },
+            "dataSource": {
+              "type": "string"
+            },
+            "mainGroup": {
+              "type": "string"
+            },
+            "section": {
+              "type": "string"
+            },
+            "status": {
+              "type": "string"
+            },
+            "subGroup": {
+              "type": "string"
+            },
+            "subclass": {
+              "type": "string"
+            },
+            "symbolPosition": {
+              "type": "string"
+            },
+            "value": {
+              "type": "string"
+            },
+            "versionDate": {
+              "type": "long"
+            }
+          }
+        },
+        "parties": {
+          "properties": {
+            "applicants": {
+              "properties": {
+                "addressBook": {
+                  "properties": {
+                    "address": {
+                      "type": "string"
+                    },
+                    "country": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            },
+            "inventors": {
+              "properties": {
+                "name": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "licensingInformation": {
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "licensing": {
+          "type": "string",
+          "fields": {
+            "raw": {
+              "type": "string",
+              "index": "not_analyzed"
+            }
+          }
+        },
+        "organisations": {
+          "properties": {
+            "id": {
+              "type": "long",
+              "index": "not_analyzed"
+            },
+            "name": {
+              "type": "string",
+              "fields": {
+                "raw": {
+                  "type": "string",
+                  "index": "not_analyzed"
+                }
+              }
+            },
+            "logoUrl": {
+              "type": "string",
+              "index": "not_analyzed"
+            }
+          }
+        },
+        "assets": {
+          "properties": {
+            "assetId": {
+              "type": "string",
+              "index": "not_analyzed"
+            },
+            "description": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string",
+              "index": "not_analyzed"
+            }
+          }
+        },
+        "fields": {
+          "properties": {
+            "area": {
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "index": "not_analyzed"
+                },
+                "numeral": {
+                  "type": "string",
+                  "index": "not_analyzed"
+                }
+              }
+            },
+            "field": {
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "index": "not_analyzed"
+                },
+                "numeral": {
+                  "type": "string",
+                  "index": "not_analyzed"
+                }
+              }
+            }
+          }
+        },
+        "displayTitle": {
+          "type": "string",
+          "fields": {
+            "raw": {
+              "type": "string",
+              "index": "not_analyzed"
+            }
+          }
+        },
+        "hasLicensees": {
+          "type": "boolean",
+          "fields": {
+            "raw": {
+              "type": "boolean",
+              "index": "not_analyzed"
+            }
+          }
+        }
+      }
+    },
+    "identifiers": {
+      "properties": {
+        "sourceSystemName": {
+          "type": "string",
+          "index": "not_analyzed"
+        },
+        "sourceSystemIdType": {
+          "type": "string",
+          "index": "not_analyzed"
+        },
+        "id": {
+          "type": "string",
+          "index": "not_analyzed"
+        }
+      }
+    }
+  }
+}

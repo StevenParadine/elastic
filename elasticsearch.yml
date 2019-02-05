@@ -1,0 +1,17 @@
+# The default settings. Note that these are suitable for single-node deployments
+# during development, but probably not suitable for production.
+cluster.name: ${CLUSTER_NAME}
+
+# Configuration of the slowlog query thresholds, default values set in start.sh
+index.search.slowlog.threshold.query.trace: ${SLOWLOG_TRACE_THRESHOLD}
+index.search.slowlog.threshold.query.debug: ${SLOWLOG_DEBUG_THRESHOLD}
+index.search.slowlog.threshold.query.info: ${SLOWLOG_INFO_THRESHOLD}
+index.search.slowlog.threshold.query.warn: ${SLOWLOG_WARN_THRESHOLD}
+
+# The lowest level of slowlog event that will be recorded, defaults to INFO
+logger.index.search.slowlog: ${SLOWLOG_LEVEL}
+
+# Configuration of the statsd metrics plugin
+metrics.statsd.host: ${STATSD_HOST}
+metrics.statsd.port: ${STATSD_PORT}
+metrics.statsd.every: ${STATSD_UPDATE_EVERY}

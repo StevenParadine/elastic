@@ -1,0 +1,142 @@
+{
+  "template": "patents-*",
+  "order": 1,
+  "mappings": {
+    "_default_": {
+      "properties": {
+        "dateProduced": {
+          "type": "long",
+          "index": "no"
+        },
+        "bibliographicDetails": {
+          "properties": {
+            "applicationDetails": {
+              "properties": {
+                "applicationNumber": {
+                  "type": "string",
+                  "index": "not_analyzed"
+                },
+                "applicationType": {
+                  "type": "string",
+                  "index": "no"
+                },
+                "auspatNumber": {
+                  "type": "string",
+                  "index": "no"
+                },
+                "effectiveDate": {
+                  "type": "long",
+                  "index": "no"
+                },
+                "expiryDate": {
+                  "type": "long",
+                  "index": "no"
+                },
+                "filingDate": {
+                  "type": "long",
+                  "index": "no"
+                },
+                "inventionTitle": {
+                  "type": "string",
+                  "index": "no"
+                },
+                "opiDate": {
+                  "type": "long",
+                  "index": "no"
+                },
+                "status": {
+                  "type": "string",
+                  "index": "no"
+                },
+                "underOpposition": {
+                  "type": "string",
+                  "index": "no"
+                }
+              }
+            },
+            "classifications": {
+              "properties": {
+                "classificationClass": {
+                  "type": "string",
+                  "index": "no"
+                },
+                "classificationLevel": {
+                  "type": "string",
+                  "index": "no"
+                },
+                "dataSource": {
+                  "type": "string",
+                  "index": "no"
+                },
+                "mainGroup": {
+                  "type": "string",
+                  "index": "no"
+                },
+                "section": {
+                  "type": "string",
+                  "index": "no"
+                },
+                "status": {
+                  "type": "string",
+                  "index": "no"
+                },
+                "subGroup": {
+                  "type": "string",
+                  "index": "no"
+                },
+                "subclass": {
+                  "type": "string",
+                  "index": "no"
+                },
+                "symbolPosition": {
+                  "type": "string",
+                  "index": "no"
+                },
+                "value": {
+                  "type": "string",
+                  "index": "no"
+                },
+                "versionDate": {
+                  "type": "long",
+                  "index": "no"
+                }
+              }
+            },
+            "parties": {
+              "properties": {
+                "applicants": {
+                  "properties": {
+                    "addressBook": {
+                      "properties": {
+                        "address": {
+                          "type": "string",
+                          "index": "no"
+                        },
+                        "country": {
+                          "type": "string",
+                          "index": "no"
+                        },
+                        "name": {
+                          "type": "string",
+                          "index": "no"
+                        }
+                      }
+                    }
+                  }
+                },
+                "inventors": {
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "index": "no"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
