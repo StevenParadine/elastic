@@ -93,16 +93,16 @@ fi
 
 # Create the keystore and add the AWS credentials into it.
 # The keystore must be created before starting elasticsearch, otherwise changes will not be registered until ES restarts
-echo "Creating elasticsearch keystore"
-bin/elasticsearch-keystore create
+#echo "Creating elasticsearch keystore"
+#bin/elasticsearch-keystore create
 
-echo "Configuring AWS credentials"
+#echo "Configuring AWS credentials"
 # These credentials will come in from secrets from openshift
 # In the staging environment this will be readonly for restoring live backups.
 # In the live environment this will be write access for creating backups.
 # --force is used to ensure the value is overridden from environment.
-echo ${S3_CLIENT_ACCESS_KEY} | bin/elasticsearch-keystore add --stdin --force s3.client.s3_backup.access_key
-echo ${S3_CLIENT_SECRET_KEY} | bin/elasticsearch-keystore add --stdin --force s3.client.s3_backup.secret_key
+#echo ${S3_CLIENT_ACCESS_KEY} | bin/elasticsearch-keystore add --stdin --force s3.client.s3_backup.access_key
+#echo ${S3_CLIENT_SECRET_KEY} | bin/elasticsearch-keystore add --stdin --force s3.client.s3_backup.secret_key
 
 /usr/local/bin/docker-entrypoint.sh &
 
