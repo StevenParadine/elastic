@@ -19,9 +19,9 @@ logger.index.search.slowlog: ${SLOWLOG_LEVEL}
 #s3.client.s3_backup.max_retries: "3"
 
 # Configuration of the statsd metrics plugin
-#metrics.statsd.host: ${STATSD_HOST}
-#metrics.statsd.port: ${STATSD_PORT}
-#metrics.statsd.every: ${STATSD_UPDATE_EVERY}
+metrics.statsd.host: ${STATSD_HOST}
+metrics.statsd.port: ${STATSD_PORT}
+metrics.statsd.every: ${STATSD_UPDATE_EVERY}
 
 reindex.remote.whitelist: ${ELASTIC_SERVICE_HOST}:${ELASTIC_SERVICE_PORT}
 
