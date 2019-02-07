@@ -8,7 +8,7 @@ cluster.name: ${CLUSTER_NAME}
 #
 # Note: This has the side effect of putting the server in "production mode", where
 # warnings are treated as exceptions.
-network.host: 0.0.0.0 
+#network.host: 0.0.0.0 
 
 # The lowest level of slowlog event that will be recorded, defaults to INFO
 logger.index.search.slowlog: ${SLOWLOG_LEVEL}
