@@ -52,44 +52,44 @@ then
 fi
 
 
-echo "Setting default config for statsd metrics"
-if [ "${STATSD_HOST}" != "" ]
-then
-  STATSD_HOST="${STATSD_HOST}"
-  echo "STATSD_HOST directly assigned from environment variables to [${STATSD_HOST}]."
-else
-  if [ "${SOURCE_IP_STATSD_PORT_8125_UDP_ADDR}" != "" ]
-  then
-    STATSD_HOST="${SOURCE_IP_STATSD_PORT_8125_UDP_ADDR}"
-    echo "STATSD_HOST set based on docker-compose links to [${STATSD_HOST}]."
-  else
-    STATSD_HOST="localhost"
-    echo "STATSD_HOST is not set, you will not receive any metrics from elasticsearch. Using [${STATSD_HOST}] as default host."
-  fi
-fi
-export STATSD_HOST
+#echo "Setting default config for statsd metrics"
+#if [ "${STATSD_HOST}" != "" ]
+#then
+#  STATSD_HOST="${STATSD_HOST}"
+#  echo "STATSD_HOST directly assigned from environment variables to [${STATSD_HOST}]."
+#else
+#  if [ "${SOURCE_IP_STATSD_PORT_8125_UDP_ADDR}" != "" ]
+#  then
+#    STATSD_HOST="${SOURCE_IP_STATSD_PORT_8125_UDP_ADDR}"
+#    echo "STATSD_HOST set based on docker-compose links to [${STATSD_HOST}]."
+#  else
+#    STATSD_HOST="localhost"
+#    echo "STATSD_HOST is not set, you will not receive any metrics from elasticsearch. Using [${STATSD_HOST}] as default host."
+#  fi
+#fi
+#export STATSD_HOST
 
-if [ "${STATSD_PORT}" != "" ]
-then
-  STATSD_PORT="${STATSD_PORT}"
-  echo "STATSD_PORT directly assigned from environment variables to [${STATSD_PORT}]."
-else
-  if [ "${SOURCE_IP_STATSD_PORT_8125_UDP_PORT}" != "" ]
-  then
-    STATSD_PORT="${SOURCE_IP_STATSD_PORT_8125_UDP_PORT}"
-    echo "STATSD_PORT set based on docker-compose links to [${STATSD_PORT}]."
-  else
-    STATSD_PORT="8125"
-    echo "STATSD_PORT is not set. Using [${STATSD_PORT}] as default host."
-  fi
-fi
-export STATSD_PORT
+#if [ "${STATSD_PORT}" != "" ]
+#then
+#  STATSD_PORT="${STATSD_PORT}"
+#  echo "STATSD_PORT directly assigned from environment variables to [${STATSD_PORT}]."
+#else
+#  if [ "${SOURCE_IP_STATSD_PORT_8125_UDP_PORT}" != "" ]
+#  then
+#    STATSD_PORT="${SOURCE_IP_STATSD_PORT_8125_UDP_PORT}"
+#    echo "STATSD_PORT set based on docker-compose links to [${STATSD_PORT}]."
+#  else
+#    STATSD_PORT="8125"
+#    echo "STATSD_PORT is not set. Using [${STATSD_PORT}] as default host."
+#  fi
+#fi
+#export STATSD_PORT
 
-if [ "${STATSD_UPDATE_EVERY}" == "" ]
-then
-  STATSD_UPDATE_EVERY="10s"
-  export STATSD_UPDATE_EVERY
-fi
+#if [ "${STATSD_UPDATE_EVERY}" == "" ]
+#then
+#  STATSD_UPDATE_EVERY="10s"
+#  export STATSD_UPDATE_EVERY
+#fi
 
 # Create the keystore and add the AWS credentials into it.
 # The keystore must be created before starting elasticsearch, otherwise changes will not be registered until ES restarts
@@ -113,15 +113,15 @@ wait_for_server
 echo "Server available"
 
 # Now that the key store is setup and configured, add the s3 repository to elasticsearch.
-echo "Configuring S3 repository for backups"
-curl -XPUT 'http://localhost:9200/_snapshot/s3_backup' --header "Content-Type: application/json" -d '{
-  "type": "s3",
-  "settings": {
-    "client": "s3_backup",
-    "bucket": "sourceip-automated-backups",
-    "base_path": "elasticsearch"
-  }
-}'
+#echo "Configuring S3 repository for backups"
+#curl -XPUT 'http://localhost:9200/_snapshot/s3_backup' --header "Content-Type: application/json" -d '{
+#  "type": "s3",
+#  "settings": {
+#    "client": "s3_backup",
+#    "bucket": "sourceip-automated-backups",
+#    "base_path": "elasticsearch"
+#  }
+#}'
 
 
 # Add in the elasticsearch indexes we need for the SourceIP project.
